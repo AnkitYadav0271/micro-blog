@@ -27,5 +27,6 @@ app.post("/events", (req, res) => {
 });
 
 app.listen(PORT, () => {
+  console.log("Version 4 is coming :):(");
   console.log(`post server is running on http://localhost:${PORT}`);
 });
