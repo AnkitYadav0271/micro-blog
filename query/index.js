@@ -42,7 +42,7 @@ app.post("/events", (req, res) => {
 
 app.listen(4010, async () => {
   console.log(`server is running on http://localhost:4010`);
-  const result = await axios.get("http://localhost:4040/events");
+  const result = await axios.get("http://event-bus-srv:4040/events");
   console.log("logging result in query", result);
   for (let event of result.data) {
     console.log("event", event.data);

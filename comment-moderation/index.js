@@ -15,7 +15,7 @@ app.post("/events", async (req, res) => {
     let status = data.comment.includes("oranges") ? "rejected" : "approved";
     console.log("new status", status);
     try {
-      await axios.post("http://localhost:4040/events", {
+      await axios.post("http://event-bus-srv:4040/events", {
         type: "CommentUpdated",
         data: {
           id: data.id,

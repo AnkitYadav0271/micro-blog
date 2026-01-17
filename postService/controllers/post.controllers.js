@@ -9,7 +9,7 @@ export const postController = async (req, res) => {
   const id = randomBytes(4).toString("hex");
   data[id] = {id,title};
   try{
-await axios.post('http://localhost:4040/events',{
+await axios.post('http://event-bus-srv:4040/events',{
     type:"postCreated",
     data:{
       id,

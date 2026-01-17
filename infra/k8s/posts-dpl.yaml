@@ -16,3 +16,18 @@ spec:
       containers:
         - name: posts-service
           image: ankityadav027/post-service:latest
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: post-clusterip-srv
+spec:
+  selector:
+    app: post-service
+  type: ClusterIP
+  ports:
+    - name: post-service
+      protocol: TCP
+      port: 3333
+      targetPort: 3333

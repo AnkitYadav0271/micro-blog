@@ -24,7 +24,7 @@ app.post("/api/v1/:id/comment", async (req, res) => {
   commentArray.push({ id, comment, comId });
 
   try {
-    await axios.post("http://localhost:4040/events", {
+    await axios.post("http://event-bus-srv:4040/events", {
       type: "CommentPost",
       data: {
         id,
@@ -67,7 +67,7 @@ app.post("/events", async (req, res) => {
     );
     changeComment.status = status;
     try {
-      await axios.post("http://localhost:4040/events", {
+      await axios.post("http://event-bus-srv:4040/events", {
         id,
         content,
         status,

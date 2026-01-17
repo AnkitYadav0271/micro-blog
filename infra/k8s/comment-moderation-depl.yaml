@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comment-moderation-dpl
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comment-moderation
+  template:
+    metadata:
+      labels:
+        app: comment-moderation
+    spec:
+      containers:
+        - name: event-bus-service
+          image: ankityadav027/comment-moderation:latest
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comment-moderation-srv
+spec:
+  selector:
+    app: comment-moderation
+  type: ClusterIP
+  ports:
+    - name: event-bus
+      protocol: TCP
+      port: 4001
+      targetPort: 4001
